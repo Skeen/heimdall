@@ -1,0 +1,27 @@
+# Test playbook.
+#
+# Should configure a test setup to the point where tests can be started with a
+# single command.
+#
+# For Django projects, this means configured to a point where all there's left
+# to do after running `vagrant ssh`, is running: `python manage.py test`.
+
+---
+# Run the entire common setup playbook
+- include: common.yml
+
+# Run production specific playbook
+- hosts: all
+
+  become: true
+  become_method: sudo
+  become_user: root
+
+  roles:
+  - role: pip_requirements
+    pip_req_file: "requirements/test.txt"
+  - populate_db
+  - selenium_tests
+  - docker
+
+...

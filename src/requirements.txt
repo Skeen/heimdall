@@ -1,0 +1,2 @@
+# Default to installing development dependencies
+-r requirements/dev.txt

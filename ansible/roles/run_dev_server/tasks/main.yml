@@ -1,0 +1,9 @@
+---
+
+  - name: Run local python server on port 8000
+    django_manage:
+      command: "runserver 0.0.0.0:8000"
+      app_path: "/vagrant/src/"
+      virtualenv: "/home/vagrant/venv/"
+
+...

@@ -1,0 +1,15 @@
+---
+
+  - name: Start Solr
+    django_manage:
+      command: "solr start --verbosity 0"
+      app_path: "/vagrant/src/"
+      virtualenv: "/home/vagrant/venv/"
+  
+  - name: Rebuild Solr schema
+    django_manage:
+      command: "solr rebuild_schema"
+      app_path: "/vagrant/src/"
+      virtualenv: "/home/vagrant/venv/"
+
+...

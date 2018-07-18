@@ -1,0 +1,4 @@
+# List of testing dependencies
+-r dev.txt
+unittest-xml-reporting==2.1.0
+python-tds==1.8.2

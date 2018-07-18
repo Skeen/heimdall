@@ -1,0 +1,67 @@
+[run]
+branch = True
+parallel = True
+concurrency = multiprocessing
+
+plugins =
+    django_coverage_plugin
+
+# Omit these from coverage requirements
+omit = 
+    # Testing stuff
+    */tests.py
+    */tests/*
+    runhealthtests.py
+    webapp/models/gen/*
+
+    # Django project stuff
+    manage.py
+    heimdall/*
+    */migrations/*
+    populate_db.py
+    webapp/admin.py
+
+    # Virtual environments
+    */venv/*
+
+    # html report
+    htmlcov/*
+
+    # documentation
+    docs/*
+
+    # tools
+    tools/*
+
+    # core stuff
+    core/*
+
+    # healthchecking stuff
+    healthcheck/*
+
+    # static files
+    database/static/*
+    static/*
+
+    # Migration program
+    data_migration/*
+
+    # Skip searching stuff
+    webapp/search_indexes.py
+    adminapp/processor.py
+
+    # Skip HTML (for now)
+    *.html
+
+    # Ignore node_modules
+    */frontend/node_modules/*
+
+
+source =
+    .
+
+[report]
+exclude_lines =
+    __str__
+    __unicode__
+    # pragma: no cover

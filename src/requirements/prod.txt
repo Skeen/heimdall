@@ -1,0 +1,3 @@
+# List of production dependencies
+-r common.txt
+graypy==0.2.14

@@ -1,0 +1,21 @@
+---
+
+  - name: Install packages based on package.json
+    npm:
+      path: "{{ packagejson_folder }}"
+      state: latest
+    become: true
+    become_user: "{{ nodejs_user }}"
+    failed_when: false
+    # TODO: Ignore deprecation warnings
+
+  - name: Build the nodejs project
+    shell: npm run build
+    args:
+      chdir: "{{ packagejson_folder }}"
+    become: true
+    become_user: "{{ nodejs_user }}"
+    failed_when: false
+    # TODO: Ignore deprecation warnings
+
+...

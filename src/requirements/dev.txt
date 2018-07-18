@@ -1,0 +1,21 @@
+# List of development dependencies
+-r common.txt
+-r ../data_migration/requirements.txt
+git+https://github.com/Skeen/django-template-i18n-lint.git#egg=django-template-i18n-lint
+git+https://github.com/Skeen/django_coverage_plugin.git#egg=django_coverage_plugin
+git+https://github.com/Skeen/python-pylint-i18n.git#egg=pylint_i18n
+coverage==4.4.1
+django-debug-toolbar==1.8
+django-slowtests==0.5.1
+flake8-docstrings==1.0.3
+flake8==3.3.0
+freezegun==0.3.9
+mock==2.0.0
+nose-parameterized==0.5.0
+pydocstyle==1.1.1
+pylint-django==0.7.2
+pylint==1.6.5
+selenium==3.4.0
+sphinx-rtd-theme==0.2.4
+sphinx==1.5.3
+sphinxcontrib-napoleon==0.6.1

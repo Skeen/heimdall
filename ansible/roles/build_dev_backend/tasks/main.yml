@@ -1,0 +1,50 @@
+---
+
+  - name: Template out wrapper
+    template:
+        src: files/gen_settings_wrapper.sh
+        dest: "{{ project_source }}/gen_settings_wrapper.sh"
+        mode: "0755"
+    become: true
+    become_user: "{{ virtualenv_user }}"
+
+  - name: Generate settings
+    command: bash "{{ project_source }}/gen_settings_wrapper.sh"
+    become: true
+    become_user: "{{ virtualenv_user }}"
+
+  - name: Preparing database
+    django_manage:
+        command: "{{ item }}"
+        app_path: "{{ project_source }}"
+        virtualenv: "{{ virtualenv_path }}"
+    with_items:
+        - makemigrations
+        - migrate
+    become: true
+    become_user: "{{ virtualenv_user }}"
+
+  - name: Handle translations
+    django_manage:
+      command: "{{ item }}"
+      app_path: "{{ project_source }}"
+      virtualenv: "{{ virtualenv_path }}"
+    with_items:
+      - "makemessages --all --no-location"
+      - "compilemessages"
+    become: true
+    become_user: "{{ virtualenv_user }}"
+
+  - name: Clean translations
+    lineinfile:
+        dest: "{{ project_source }}/locale/da_DK/LC_MESSAGES/django.po"
+        state: absent
+        regexp: "{{ item }}"
+    with_items:
+        - '^"Report-Msgid-Bugs-To:.*"'
+        - '^"POT-Creation-Date:.*"'
+    changed_when: false
+    become: true
+    become_user: "{{ virtualenv_user }}"
+
+...

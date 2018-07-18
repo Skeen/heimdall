@@ -1,0 +1,10 @@
+---
+
+  - name: Chown home folder
+    file:
+        dest: /home/vagrant/
+        owner: vagrant
+        group: vagrant
+        recurse: yes
+
+...

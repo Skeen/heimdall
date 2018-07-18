@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  author: Emil Madsen
+  description: Installs python, pip and virtualenv
+  company: Magenta ApS
+  license: MPLv2
+  min_ansible_version: 1.2
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  #- name: Windows
+  #  versions:
+  #  - all
+  #  - 2012R2
+dependencies: []
+

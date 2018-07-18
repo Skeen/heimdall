@@ -1,0 +1,16 @@
+---
+
+  - name: Template out wrapper
+    template:
+        src: files/populate_db_wrapper.sh
+        dest: "{{ project_source }}/populate_db_wrapper.sh"
+        mode: "0755"
+    become: true
+    become_user: "{{ virtualenv_user }}"
+
+  - name: Populate db
+    command: bash "{{ project_source }}/populate_db_wrapper.sh"
+    become: true
+    become_user: "{{ virtualenv_user }}"
+
+...

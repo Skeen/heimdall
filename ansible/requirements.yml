@@ -1,0 +1,10 @@
+- src: git+https://github.com/magenta-aps/ansible-role-vim.git
+  version: master
+  name: vim
+- src: git+https://github.com/magenta-aps/ansible-role-pip_requirements.git
+  version: master
+  name: pip_requirements
+- src: git+https://github.com/magenta-aps/ansible-role-docker.git
+  version: master
+  name: docker
+- src: geerlingguy.nodejs

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+APPLICANTS=5 APPLICATIONS=25 BUILDINGS=2 TENANCY_GROUPS=2 TENANCIES=5 OFFERS=5 \
+OFFERS_SENT=5 MESSAGES=5 ./populate_db.py --basics --gendata --rules --recalc
+STATUS=$?
+exit $STATUS

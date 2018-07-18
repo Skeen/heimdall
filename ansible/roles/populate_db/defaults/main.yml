@@ -1,0 +1,4 @@
+---
+virtualenv_user: vagrant
+virtualenv_path: "/home/{{ virtualenv_user }}/venv"
+project_source: /vagrant/src

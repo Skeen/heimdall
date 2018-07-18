@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source {{ virtualenv_path }}/bin/activate
+cd /{{virtualenv_user}}/src/
