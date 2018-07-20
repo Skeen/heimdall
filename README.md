@@ -1,4 +1,4 @@
-Heimdall - Password Server
+hagrid - Password Server
 --------------------------
 
 # Status
