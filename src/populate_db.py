@@ -79,7 +79,7 @@ def main():
         # Setup django
         os.environ.setdefault(
             "DJANGO_SETTINGS_MODULE",
-            "heimdall.testing_settings"
+            "hagrid.testing_settings"
         )
         django.setup()
 
@@ -93,7 +93,7 @@ def main():
 def gen_random_data():
     """Insert randomly generated data in the database."""
 
-    print "Heimdall data generator"
+    print "hagrid data generator"
     print "Running takes ~3 minutes..."
     print ""
 

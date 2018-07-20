@@ -12,7 +12,7 @@ def gen_user(boy=None, password=None):
     """Generate a randomized user account."""
     username = get_random_string(10, util.CHARACTERS)
     if password is None:
-        password = "heimdall"
+        password = "hagrid"
 
     user = get_user_model()(
         username=username,

@@ -67,7 +67,7 @@ class Command(DockerService, ServiceCommand):
 
     def start(self):
         # pylint: disable=no-name-in-module
-        from heimdall.settings import DATABASES
+        from hagrid.settings import DATABASES
         if (DATABASES['default']['ENGINE'] ==
                 'django.db.backends.postgresql'):
             print "Warning: Project, already configured to use Postgres"
@@ -78,7 +78,7 @@ class Command(DockerService, ServiceCommand):
     def _setup_volumes(self):
         # Setup path to our database
         # pylint: disable=no-name-in-module
-        from heimdall.settings import BASE_DIR
+        from hagrid.settings import BASE_DIR
         database_folder = BASE_DIR + '/database/pg' + gen_random_id() + '/'
 
         # Create database folder
@@ -102,8 +102,8 @@ class Command(DockerService, ServiceCommand):
 
         # Setup path to our database
         # pylint: disable=no-name-in-module
-        from heimdall.settings import BASE_DIR
-        settings_file = BASE_DIR + '/heimdall/settings/components/database.py'
+        from hagrid.settings import BASE_DIR
+        settings_file = BASE_DIR + '/hagrid/settings/components/database.py'
 
         with open(settings_file, "w") as settings:
             lines = [

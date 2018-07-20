@@ -22,7 +22,7 @@ class DockerService(object):
         self.client = docker.from_env(version='auto')
         # Setup dockerid path
         # pylint: disable=no-name-in-module
-        from heimdall.settings import BASE_DIR
+        from hagrid.settings import BASE_DIR
         self.dockerid_path = (BASE_DIR + '/database/' +
                               self.service_name + '_dockerid')
 

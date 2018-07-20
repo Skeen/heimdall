@@ -14,7 +14,7 @@ omit =
 
     # Django project stuff
     manage.py
-    heimdall/*
+    hagrid/*
     */migrations/*
     populate_db.py
 

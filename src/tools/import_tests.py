@@ -10,7 +10,7 @@ import django
 def main():
     """Run this to see test import errors."""
     sys.path.append(os.getcwd())
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "heimdall.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hagrid.settings")
     django.setup()
 
     # pylint: disable=unused-variable

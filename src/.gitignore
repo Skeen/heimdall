@@ -3,8 +3,8 @@
 reports/
 /static
 docs/_build/
-heimdall/settings.py
-heimdall/settings_*.py
+hagrid/settings.py
+hagrid/settings_*.py
 celerybeat.pid
 database/
 core/static/core/uploads/
@@ -13,10 +13,10 @@ gen_settings_wrapper.sh
 populate_db_wrapper.sh
 *.pstat
 beat.timestamp
-heimdall/settings/auto/test_runner.py
-heimdall/settings/components/searching.py
+hagrid/settings/auto/test_runner.py
+hagrid/settings/components/searching.py
 
-heimdall/settings/flags/secret_key.py
-heimdall/settings/components/database.py
+hagrid/settings/flags/secret_key.py
+hagrid/settings/components/database.py
 
 api/migrations/*

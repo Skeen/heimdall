@@ -23,7 +23,7 @@ class ProcessService(object):
         super(ProcessService, self).__init__()
         # Setup pid_path path
         # pylint: disable=no-name-in-module
-        from heimdall.settings import BASE_DIR
+        from hagrid.settings import BASE_DIR
         self.pid_path = BASE_DIR + '/database/' + self.service_name + '_pid'
         # Setup log path
         self.log_path = BASE_DIR + '/database/' + self.service_name + '_log'

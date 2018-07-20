@@ -7,7 +7,7 @@ cd $DIR/..
 # Create database folder
 mkdir -p database/
 
-OUT=heimdall/settings/flags/secret_key.py
+OUT=hagrid/settings/flags/secret_key.py
 if [ -f "$OUT" ]; then
     echo "Secret key already set!" 1>&2
 

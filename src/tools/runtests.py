@@ -37,7 +37,7 @@ def main(tests):
     """
     os.environ.setdefault(
         "DJANGO_SETTINGS_MODULE",
-        "heimdall.testing_settings"
+        "hagrid.testing_settings"
     )
 
     # For configuration details, see:
@@ -89,7 +89,7 @@ if __name__ == "__main__":
             warnings.filterwarnings(
                 action="error",
                 category=category,
-                module='heimdall|core|api',
+                module='hagrid|core|api',
             )
 
         # pylint: disable=invalid-name
