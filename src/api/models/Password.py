@@ -45,7 +45,7 @@ class Password(models.Model):
     """Public key this password was encrypted under."""
 
     signature = models.CharField(max_length=util.MAX_LENGTH_NUMBER)
-    """Signature that was made by the encrypter."""
+    """Signature that was made by the encrypter (base64 encoded)"""
 
     signing_key = models.ForeignKey(
         'PublicKey',
@@ -58,7 +58,7 @@ class Password(models.Model):
         """Check that the signature checks out."""
         binary_password = base64.b64decode(self.password)
         binary_signature = base64.b64decode(self.signature)
-        public_key.verify(
+        self.signing_key.as_key().verify(
             binary_signature,
             binary_password,
             padding.PSS(

@@ -137,11 +137,13 @@ def gen_random_data():
 
     # -- Generate application targets
     with step("Generate key entries"):
+        from django.contrib.auth.models import Group
         from api.models import KeyEntry
         from api.models.gen import gen_key_entry
 
         while KeyEntry.objects.count() < KEYENTRIES:
-            key_entry = gen_key_entry()
+            group = get_random_row(Group)
+            key_entry = gen_key_entry(owner=group)
 
 
 if __name__ == "__main__":

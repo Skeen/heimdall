@@ -13,6 +13,7 @@ import django_filters
 from django_filters.rest_framework import DjangoFilterBackend
 
 from api.models import Password
+from api.views.PublicKey import PublicKeySerializer
 
 
 # Serializers define the API representation.
@@ -22,6 +23,14 @@ class PasswordSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Password
         fields = ('__all__')
+
+    signing_key = PublicKeySerializer(
+        read_only=True
+    )
+
+    public_key = PublicKeySerializer(
+        read_only=True
+    )
 
 
 # ViewSets define the view behavior.
