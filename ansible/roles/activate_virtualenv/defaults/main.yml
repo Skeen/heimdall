@@ -1,5 +1,0 @@
----
-virtualenv_user: vagrant
-virtualenv_path: "/home/{{ virtualenv_user }}/venv/"
-home_folder: "/home/{{ virtualenv_user}}/"
-project_source: /vagrant/src/

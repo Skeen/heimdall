@@ -7,6 +7,13 @@ sharing passwords efficietly using our preestablish SSH key infrastructure.
 
 The code is in no way ready for use.
 
+Experimenting
+=============
+* Clone the repository
+* Install packages
+* Run `populate_db.py`
+* Run `./manage.py runserver`
+
 Getting help
 ============
 Browse the AUTHORS file, and ask around the office.

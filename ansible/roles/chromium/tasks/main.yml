@@ -1,9 +1,0 @@
----
-
-  - name: Install Chromium
-    apt:
-      name: chromium
-      update_cache: yes
-      state: present
-
-...
