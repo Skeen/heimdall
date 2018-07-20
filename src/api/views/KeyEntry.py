@@ -48,7 +48,7 @@ class KeyEntrySerializer(serializers.HyperlinkedModelSerializer):
 #        users = [
 #            user, get_user_model().objects.get(pk=3)
 #        ]
-        users = get_user_model().objects.filter(public_key__isnull=False)
+        users = get_user_model().objects.filter(public_keys__isnull=False)
         users_set = set([x.pk for x in users])
         passwords = data['passwords_write']
         passwords_keyset = set([int(x['user_pk']) for x in passwords])
@@ -65,22 +65,9 @@ class KeyEntrySerializer(serializers.HyperlinkedModelSerializer):
 
         # TODO: Check password signatures
         # Load uploaders public key
-        from cryptography.hazmat.backends import default_backend
-        from cryptography.hazmat.primitives import serialization
-        import base64
-        from cryptography.hazmat.primitives import hashes
-        from cryptography.hazmat.primitives.asymmetric import padding
 
         user =  self.context['request'].user
-        key_string = str(user.public_key.key)
-        # Check if parsing throws an exception
-        try:
-            public_key = serialization.load_ssh_public_key(
-                key_string,
-                backend=default_backend()
-            )
-        except ValueError as value_error:
-            raise ValidationError(str(value_error))
+        public_key = user.public_key.first().as_key()
 
         for dicty in passwords:
             user_pk = int(dicty['user_pk'])
@@ -92,17 +79,14 @@ class KeyEntrySerializer(serializers.HyperlinkedModelSerializer):
                     _("Some users could not be looked up.")
                 )
 
-            encrypted_password = base64.b64decode(encoded_password)
-            signature = base64.b64decode(encoded_signature)
-            public_key.verify(
-                signature,
-                encrypted_password,
-                padding.PSS(
-                    mgf=padding.MGF1(hashes.SHA256()),
-                    salt_length=padding.PSS.MAX_LENGTH
-                ),
-                hashes.SHA256()
+            password = Password(
+                key_entry=keyentry,
+                public_key=key,
+                password=encoded_password,
+                signature=encoded_signature,
+                signing_key = public_key
             )
+            password.full_clean()
 
         return data
 

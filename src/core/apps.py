@@ -9,32 +9,6 @@ from django.dispatch import receiver
 class CoreConfig(AppConfig):
     name = 'core'
 
-    def ready(self):
-        # Try to set ubs_admin password, this fails under makemigrations.
-        try:
-            from django.conf import settings
-            from core.util import get_user_ubs_admin
-
-            ubsadmin = get_user_ubs_admin()
-            ubsadmin.set_password(settings.DEFAULT_ADMIN_PASSWORD)
-            ubsadmin.changeReason = 'New admin password'
-            ubsadmin.save()
-        except Exception as exception:
-            # TODO: Log exception
-            pass
-
-        # Try to set domain name, this fails under makemigrations.
-        try:
-            from django.conf import settings
-            from django.contrib.sites.models import Site
-            current_site = Site.objects.get_current()
-            current_site.domain = settings.SITE_URL
-            current_site.name = settings.SITE_NAME
-            current_site.save()
-        except Exception as exception:
-            # TODO: Log exception
-            pass
-
 
 old_debug = True
 

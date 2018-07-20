@@ -25,13 +25,27 @@ class PublicKey(models.Model):
         verbose_name = _lazy("public key")
         verbose_name_plural = _lazy("public keys")
 
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         get_user_model(),
-        related_name="public_key",
+        related_name="public_keys",
         on_delete=models.PROTECT
     )
 
+    # TODO: Consider unique=True for security?
     key = models.CharField(max_length=util.MAX_LENGTH_NUMBER)
 
+    def as_key(self):
+        return util.parse_key(self.key)
+
+    def clean(self):
+        """Check that :code:`key` is an ssh public key."""
+        try:
+            self.as_key()
+        # ValueError is thrown if the 'key' could not be properly decoded
+        # or if the key is not in the proper format.
+        except ValueError as value_error:
+            # Here we just rethrow after wrapping
+            raise ValidationError(str(value_error))
+
     def __str__(self):
-        return "WOW"
+        return 'User: ' + self.user.username + " " + str(self.pk)

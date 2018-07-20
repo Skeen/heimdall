@@ -1,6 +1,7 @@
 """Django Model."""
 from __future__ import unicode_literals
 from django.utils.encoding import python_2_unicode_compatible
+from django.contrib.auth.models import Group
 
 #from django.core.exceptions import ValidationError
 #from django.utils.translation import ugettext as _
@@ -21,7 +22,13 @@ class KeyEntry(models.Model):
         verbose_name = _lazy("key entry")
         verbose_name_plural = _lazy("key entries")
 
-    # history = HistoricalRecords()
+    owner = models.ForeignKey(
+        Group,
+        related_name="key_entries",
+        on_delete=models.PROTECT
+    )
+    """
+    """
 
     title = models.CharField(max_length=util.MAX_LENGTH_NUMBER, blank=True)
     """
@@ -40,4 +47,4 @@ class KeyEntry(models.Model):
     """
 
     def __str__(self):
-        return ("KeyEntry: " + self.title + " for " + self.username + " @ " + self.url)
+        return (self.title + " for " + self.username + " @ " + self.url)
