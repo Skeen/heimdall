@@ -11,15 +11,5 @@ environment.
 # pylint: disable=wildcard-import
 from heimdall.settings import *
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-    }
-}
-
-if 'HAYSTACK_SIGNAL_PROCESSOR' in globals():
-    print "Cleaning signal processor."
-    del HAYSTACK_SIGNAL_PROCESSOR
-
 TESTING = True
 DEBUG = True

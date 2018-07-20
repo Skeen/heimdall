@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
     'django_extensions',
@@ -103,13 +102,6 @@ DATABASES = {
     }
 }
 
-# Haystack
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
@@ -129,18 +121,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Enable session expiration on browser close
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
-
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 LANGUAGE_CODE = 'en-us'
@@ -149,21 +135,10 @@ LANGUAGES = [
     ('da-dk', _('Denmark'))
 ]
 
-# Configure email backend
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 # Output test report
 TEST_RUNNER = 'django_slowtests.testrunner.DiscoverSlowestTestsRunner'
 NUM_SLOW_TESTS = 10
 # TEST_OUTPUT_VERBOSE = 1
-
-# Celery settings
-CELERY_BROKER_URL = 'amqp://guest:guest@localhost//'
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_RESULT_BACKEND = 'rpc://'
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_TRACK_STARTED = True
-CELERY_TASK_ALWAYS_EAGER = True
 
 # Logging
 LOGGING = {
@@ -184,41 +159,11 @@ LOGGING = {
         },
     },
     'loggers': {
-        'authentication': {
-            'handlers': ['file'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
-            'propagate': True,
-        },
         'django': {
             'handlers': ['file'],
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
             'propagate': True,
         },
-        'webapp': {
-            'handlers': ['file'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
-            'propagate': True,
-        },
-        'adminapp': {
-            'handlers': ['file'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
-            'propagate': True,
-        },
-        'celery': {
-            'handlers': ['file'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
-            'propagate': True,
-        },
-        'pysolr': {
-            'handlers': ['file'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'WARNING'),
-            'propagate': True,
-        },
-        'urllib3': {
-            'handlers': ['file'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'WARNING'),
-            'propagate': True,
-        }
     },
 }
 
@@ -234,32 +179,6 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
 }
-
-# reCAPTCHA
-NOCAPTCHA = True
-
-# TODO: Get these keys by signing up at: https://www.google.com/recaptcha
-# RECAPTCHA_PUBLIC_KEY = 'Site key'
-# RECAPTCHA_PRIVATE_KEY = 'Secrey key'
-
-DEFAULT_ADMIN_PASSWORD = 'ubsadmin'
-
-
-# Documents
-DOCUMENT_ROOT = os.path.join(BASE_DIR, 'database/documents/')
-
-# Uploaded files
-# Absolute path where files are upload to
-MEDIA_ROOT = os.path.join(BASE_DIR, 'database/media/')
-MEDIA_URL = '/media/'
-FILE_UPLOAD_PERMISSIONS = 0644
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
-# Absolute path where static content is served from
-STATIC_ROOT = os.path.join(BASE_DIR, 'database/static/')
-STATIC_URL = '/static/'
-
 
 # HEIMDALL
 MASTER_PUBLIC_KEY = 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUcHrd+lfdEU/HIhhQ8XKc3TSeum4aL/n4LoAWmBFDLX9J7dbi7Wo2dZIm1eREoWbMilL7vp+aq8bT+IeMcRREoJ+XRIXB7F/jFO55NtjRpACKaaFXSvH9c1RcMuW1XS3ZvK944jKTsas/bObqU1ICo/LgPchwxhk6lb1JcblIIkS18zOvm/i7vb1BK63uBGy6GEwn8d+QFp9NgKbsKb3osG3mQ7VokYEt8WVyssPcahyZe+LP49LJpGOtbCewCGHnk6oAXoOHcAJknJaeQoHAZrl8NEa8JBrOkR6p/+nJSb/HoAfnkReMXNTjlzVitVNC+lkkr9CefiGtufm68qIr skeen@morphine'
