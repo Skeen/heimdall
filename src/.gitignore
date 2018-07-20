@@ -19,12 +19,4 @@ heimdall/settings/components/searching.py
 heimdall/settings/flags/secret_key.py
 heimdall/settings/components/database.py
 
-# Some static assets being built by webpack
-adminapp/static/adminapp/js/adminapp.js
-adminapp/static/adminapp/css/adminapp.css
-webapp/static/webapp/js/webapp.js
-webapp/static/webapp/css/webapp.css
-
-# Testing screenshots
-adminapp/frontend/tests/screenshots/
-webapp/frontend/tests/screenshots/
+api/migrations/*

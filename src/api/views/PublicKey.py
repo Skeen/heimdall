@@ -55,7 +55,6 @@ class PublicKeyViewSet(mixins.CreateModelMixin,
     queryset = PublicKey.objects.all().order_by('pk')
     serializer_class = PublicKeySerializer
 
-    # pylint: disable=missing-docstring
     def perform_create(self, serializer):
         # Send from the current user
         serializer.save(

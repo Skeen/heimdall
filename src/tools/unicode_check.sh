@@ -2,7 +2,7 @@
 
 FILES_USING_STR=$(\
 ./tools/find_files.py ".py" |\
- ./tools/filter_files.py "*/docs/*" "*/venv/*" "*/migrations/*" |\
+ ./tools/filter_files.py "*/venv/*" "*/migrations/*" |\
  ./tools/filter_files.py "*/frontend/node_modules/*" |\
  xargs grep "str(" |\
  cut -d':' -f1 |\
@@ -11,7 +11,7 @@ FILES_USING_STR=$(\
 
 FILES_USING_UNICODE=$(\
 ./tools/find_files.py ".py" |\
- ./tools/filter_files.py "*/docs/*" "*/venv/*" "*/migrations/*" |\
+ ./tools/filter_files.py "*/venv/*" "*/migrations/*" |\
  ./tools/filter_files.py "*/frontend/node_modules/*" |\
  xargs grep "__unicode__" |\
  cut -d':' -f1 |\

@@ -14,12 +14,8 @@ def main():
     django.setup()
 
     # pylint: disable=unused-variable
-    import webapp.tests
-    import adminapp.tests
     import core.tests
     import api.tests
-    import data_migration.tests
-    # import healthcheck.tests
 
 
 if __name__ == "__main__":

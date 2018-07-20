@@ -139,7 +139,6 @@ class KeyEntryViewSet(mixins.CreateModelMixin,
         queryset = self.get_queryset_raw()
         return queryset.order_by('pk')
 
-    # pylint: disable=missing-docstring
     def perform_create(self, serializer):
         # Send from the current user
         serializer.save(

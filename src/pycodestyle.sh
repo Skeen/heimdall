@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ./tools/find_files.py ".py" | \
- ./tools/filter_files.py "*/docs/*" "*/venv/*" "*/migrations/*" | \
+ ./tools/filter_files.py "*/venv/*" "*/migrations/*" | \
  ./tools/filter_files.py "*/heimdall/settings*" |\
  ./tools/filter_files.py "*/licence/*" |\
  ./tools/filter_files.py "*/database/*" |\

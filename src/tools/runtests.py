@@ -89,7 +89,7 @@ if __name__ == "__main__":
             warnings.filterwarnings(
                 action="error",
                 category=category,
-                module='adminapp|heimdall|core|healthcheck|webapp|api',
+                module='heimdall|core|api',
             )
 
         # pylint: disable=invalid-name
@@ -101,9 +101,6 @@ if __name__ == "__main__":
             main([specific_test])
         else:
             main([
-                'webapp.tests',
-                'adminapp.tests',
                 'core.tests',
                 'api.tests',
-                'data_migration.tests',
             ])
