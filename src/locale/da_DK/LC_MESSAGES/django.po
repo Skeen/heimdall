@@ -27,20 +27,19 @@ msgstr ""
 msgid "passwords"
 msgstr ""
 
+msgid "public key"
+msgstr ""
+
+msgid "public keys"
+msgstr ""
+
+msgid "Request did not contain required passwords. Extra passwords: "
+msgstr ""
+
+msgid "Some users could not be looked up."
+msgstr ""
+
 msgid "Unknown subview type"
-msgstr ""
-
-msgid "Non Searchable model provided to SolrSearchView"
-msgstr ""
-
-msgid "The Solr search engine is not responding."
-msgstr ""
-
-#, python-format
-msgid "No parent %(key)s found"
-msgstr ""
-
-msgid "Pagination variable not set!"
 msgstr ""
 
 msgid "English"

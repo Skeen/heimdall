@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-./tools/find_files.py ".py" --paths "." |\
+./tools/find_files.py ".py" --paths ".." |\
  ./tools/filter_files.py "*/docs/*" "*/venv/*" "*/migrations/*" "*/tests/*" |\
  ./tools/filter_files.py "*/heimdall/settings*" |\
  ./tools/filter_files.py "*/licence/*" |\
